@@ -72,8 +72,9 @@ export default {
     .catalogue-dropdown {
         display: none;
         opacity: 0%;
+        z-index: 1;
         position: absolute;
-  
+        background-color: #fff;
         list-style-type: none;
         box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.15);
         min-width: 208px;

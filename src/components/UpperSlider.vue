@@ -17,11 +17,6 @@
 <script>
 /* ----------------------------- default javascript for slider ----------------------------- */
 
-const cont = document.querySelector('.slider-cont')
-const slider = document.querySelector('.slider')
-
-
-var screensize = screen.width
 
 
 
