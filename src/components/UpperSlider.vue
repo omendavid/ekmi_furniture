@@ -63,9 +63,9 @@ export default {
 
 
 .sec-1 {
+
+    max-height: 51.6vw;
     height: 100%;
-    max-height: 744px;
-    height: 744px;
     position: relative;
 }
 
@@ -90,6 +90,7 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 30px;
     margin: 0 auto;
 
 
@@ -99,7 +100,7 @@ export default {
 .s-1-p1{
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 4.1vw;
     h2{
         font-weight: 600;
         font-size: 42px;
@@ -124,14 +125,18 @@ export default {
 .s-1-p2{
     width: 100%;
     max-width: 70%;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2vw;
+    padding-top: 2vw;
     .since-div{
         p{
             font-weight: 400;
             font-size: 20px;
             color: white;
             line-height: 127.5%;
-            padding: 35px 0px;
+            
             text-align: end;
         }
     }
@@ -167,10 +172,7 @@ export default {
     
     }
 		
-
-        
-        
-    }
+}
 
 
 // Slides styles
@@ -181,8 +183,45 @@ export default {
 
 
 @media screen and ( min-width: 1440px) {
+
+    .sec1 {
+        max-height: 744px;
+    }
+
     .sec-1-flex{
         max-width: 1170px;
+    }
+
+    .s-1-p1{
+        gap: 60px;
+    }
+
+    .s-1-p2{
+        padding-top: 35px;
+        max-width: 70%;
+        gap: 35px;
+    }
+}
+
+@media screen and ( max-width: 1270px ) {
+    .s-1-p1{
+        h2{
+            font-size: 3.3vw;
+        }
+        button{
+            font-size: 1.3vw;
+        }
+    }
+    .s-1-p2 {
+        .since-div{
+            p{
+                font-size: 1.8vw;
+            }
+        } 
+    }
+
+    .agile, .agile__track{
+        height: 40vw;
     }
 }
 

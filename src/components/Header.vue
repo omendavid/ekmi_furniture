@@ -56,7 +56,7 @@ export default {
 <style lang="scss" scoped>
 
     nav {
-        padding: 1.64% 0;
+        // padding: 1.64% 0;
     }
 
     .catalogue {
@@ -106,7 +106,8 @@ export default {
         max-width: 83.5%;
         width: 100%;
         margin: 0 auto;
-        padding: 0;
+        padding: 1.64% 0px;
+
         list-style-type: none;
         font-size: 13px;
         font-weight: 600;
@@ -116,6 +117,10 @@ export default {
 
     .n-el-cont > li{
         cursor: pointer;
+    }
+
+    .logo img{
+        width: 15vw;
     }
 
     .n-el-cont select {
@@ -141,11 +146,19 @@ export default {
     
 
     @media screen and (min-width: 1400px) {
-        nav{
-            max-width: 1170px;
-        }
         .n-el-cont{
             max-width: 1170px;
+            padding: 25px 0px;
+        }
+
+        .logo img{
+            width: initial;
+        }
+    }
+
+    @media screen and (max-width: 890px) {
+        .h-u-l{
+            font-size: 1.4vw;
         }
     }
 </style>
