@@ -41,4 +41,16 @@ a {
   text-decoration: none;
 }
 
+::-webkit-scrollbar{
+  width: 6px;
+}
+
+::-webkit-scrollbar-track{
+  background: rgb(221, 221, 221);
+}
+::-webkit-scrollbar-thumb{
+  background: #ff9619;
+  border-radius: 6px;
+}
+
 </style>

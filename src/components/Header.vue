@@ -16,8 +16,8 @@
                 </li>
                 <li class="h-u-l individual">Индивидуальная мебель</li>
                 <li class="h-u-l contacts">Контакты</li>
-                <li class="h-u-l logo"><img src="../assets/img/logo.png" alt=""></li>
-                <li class="h-u-l about">О компании</li>
+                <li class="h-u-l logo"><router-link to="/"><img src="../assets/img/logo.png" alt=""></router-link></li>
+                <li class="h-u-l about"><router-link to="about"> О компании</router-link></li>
                 <li class="h-u-l tel"><a href="tel:+38 (099)-638-45-37"> +38 (099)-638-45-37</a></li>
                 <li class="h-u-l lang">
                     <select name="" id="">
@@ -56,7 +56,7 @@ export default {
 <style lang="scss" scoped>
 
     nav {
-        padding: 1.64%;
+        padding: 1.64% 0;
     }
 
     .catalogue {
@@ -103,7 +103,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         flex-wrap: nowrap;
-        max-width: 1170px;
+        max-width: 83.5%;
         width: 100%;
         margin: 0 auto;
         padding: 0;
@@ -139,4 +139,13 @@ export default {
         color: #ff9619
     }
     
+
+    @media screen and (min-width: 1400px) {
+        nav{
+            max-width: 1170px;
+        }
+        .n-el-cont{
+            max-width: 1170px;
+        }
+    }
 </style>
