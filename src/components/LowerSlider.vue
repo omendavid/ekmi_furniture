@@ -26,7 +26,7 @@ export default {
     
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 
 
 .sec-2{
@@ -50,7 +50,7 @@ export default {
         }
     }
     .s-2-slider-cont{
-        
+        padding: 80px 60px;
     }
 
     .s-2-f-but{
@@ -61,8 +61,8 @@ export default {
             text-transform: uppercase;
             border: none;
             font-weight: 700;
-            font-size: 16px;   
-            padding: 0.9vw 1.4vw;
+            font-size: 16px;
+            padding: 14px 21px;   
             transition: all 0.3s ease;
             cursor: pointer;
             &:hover{
@@ -79,7 +79,7 @@ export default {
         display: flex;
         background: #F2F3F5;
         height: 79.8%;
-        max-height: 278px;
+        
         img{
             margin: auto auto;
         }
@@ -88,6 +88,10 @@ export default {
     .s-2-s-info-cont{
         text-transform: uppercase;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding-top: 15px;
         h3{
             font-weight: 500;
             font-size: 18px;
@@ -120,10 +124,40 @@ export default {
         }
         .s-2-f-but{
             button{
-                font-size: 1.3vw;   
+                font-size: 1.3vw;
+                padding: 0.9vw 1.4vw;
             }
         }
     }
+    .slide{
+        max-width: 18.75vw;
+        height: 24.1vw;
+        
+
+        .s-2-s-img-cont{
+            img{
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+        .s-2-s-info-cont{
+            gap: 0.3vw;
+            padding-top: 1vw;
+            h3{
+                font-size: 1.45vw;
+            }
+            p{
+                font-size: 1.45vw;
+            }
+        }    
+    }
+    .s-2-flex{
+        .s-2-slider-cont{
+            padding: 5.5vw 4.1vw;
+        }
+    }
+    
 }
     
 
