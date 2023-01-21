@@ -20,10 +20,9 @@
                 <li class="h-u-l about"><router-link to="about"> О компании</router-link></li>
                 <li class="h-u-l tel"><a href="tel:+38 (099)-638-45-37"> +38 (099)-638-45-37</a></li>
                 <li class="h-u-l lang">
-                    <select name="" id="">
+                    <select id="">
                         <option 
-                            v-for="lang in langs"
-                            :key="index"
+                            v-for="lang in langs" 
                             :value="lang.lang"
                         >{{ lang.lang }}</option>
                     </select>
@@ -77,16 +76,20 @@ export default {
         background-color: #fff;
         list-style-type: none;
         box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.15);
-        min-width: 208px;
+        min-width: 14.4vw;
         width: 100%;
         transition: all 0.3s ease;
+        li{
+            height: fit-content;
+            line-height: initial;
+        }
     }
 
     
 
     .catalogue-dropdown li{
         box-sizing: border-box;
-        padding: 11px 11px;
+        padding: 0.7vw;
         width: 100%;
         transition: all 0.2s ease;
         cursor: pointer;
@@ -129,9 +132,9 @@ export default {
 
     .n-el-cont select option {
         border: none;
-        box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.15);
+
         background-color: white;
-        color: #ff9619;
+        
     }
 
    .n-el-cont select option:focus{
@@ -154,11 +157,21 @@ export default {
         .logo img{
             width: initial;
         }
+
+        .catalogue-dropdown{
+            min-width: 208px;
+            li{
+                padding: 11px;
+            }
+        }
     }
 
     @media screen and (max-width: 890px) {
         .h-u-l{
             font-size: 1.4vw;
+            select{
+                font-size: 1.4vw;
+            }
         }
     }
 </style>

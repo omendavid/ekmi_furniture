@@ -58,7 +58,7 @@ export default {
     }
 }
 </script>
-<style lang="scss" >
+<style lang="scss">
 
 
 
@@ -118,7 +118,7 @@ export default {
         border: none;
         font-weight: 700;
         font-size: 16px;   
-        padding: 13px 21px;
+        padding: 0.9vw 1.4vw;
     }
 }
 
@@ -142,36 +142,46 @@ export default {
     }
 
 }
+.sec-1{
+    .agile {
 
-.agile {
-
-    .agile__actions{
-        margin: 2.5% 0px 0px 0px;
-        .agile__dots{
-            gap: 10px;
-            .agile__dot{
-                border: none;
-                border-radius: 50%;
-                background-color: #f2f3f5;
-
-                &--current {
-                    background-color: #ff9619;
-                    border-radius: 50%;
-                }
-
-                button{
-                    padding: 7px;
-                    background-color: transparent;
+        .agile__actions{
+            margin: 2.5% 0px 0px 0px;
+            .agile__dots{
+                gap: 10px;
+                .agile__dot{
                     border: none;
                     border-radius: 50%;
-                    
-                }
-            }
+                    background-color: #f2f3f5;
 
-        } 
+                    &--current {
+                        background-color: #ff9619;
+                        border-radius: 50%;
+                    }
+
+                    button{
+                        padding: 0.4vw;
+                        background-color: transparent;
+                        border: none;
+                        border-radius: 50%;
+
+                    }
+                }
+
+            } 
+        
+        }
+
+        &__slide{
+            display: flex;
+            img{
+                width: 60vw;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
     
     }
-		
 }
 
 
@@ -182,7 +192,7 @@ export default {
 }
 
 
-@media screen and ( min-width: 1440px) {
+@media screen and ( min-width: 1400px) {
 
     .sec1 {
         max-height: 744px;
@@ -194,12 +204,33 @@ export default {
 
     .s-1-p1{
         gap: 60px;
+        button {
+            padding: 13px 21px;
+        }
     }
 
     .s-1-p2{
         padding-top: 35px;
         max-width: 70%;
         gap: 35px;
+    }
+
+    .agile{
+        .agile__actions{
+            .agile__dots{
+                .agile__dot{
+                    button{
+                        padding: 7px;
+                    }
+                }
+            }
+        }
+
+        &__slide{
+            img {
+                width: initial;
+            }
+        }
     }
 }
 
@@ -215,7 +246,7 @@ export default {
     .s-1-p2 {
         .since-div{
             p{
-                font-size: 1.8vw;
+                font-size: 1.6vw;
             }
         } 
     }
