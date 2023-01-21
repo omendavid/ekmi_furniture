@@ -12,13 +12,13 @@
                     </div>
                     <agile  :autoplay="true" :autoplaySpeed="3000" :pauseOnDotsHover="true" :navButtons="false" :fade="true" >
                         <div class="slide">
-                            <img src="../assets/img/couch_1.png" alt="">
+                            <img src="../assets/img/section_1/couch_1.png" alt="">
                         </div>
                         <div class="slide">
-                            <img src="../assets/img/couch_2.png" alt=""> 
+                            <img src="../assets/img/section_1/couch_2.png" alt=""> 
                         </div>
                         <div class="slide">
-                            <img src="../assets/img/couch_3.png" alt=""> 
+                            <img src="../assets/img/section_1/couch_3.png" alt=""> 
                         </div>
                     </agile>
                 </div>
@@ -58,7 +58,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 
 
 
@@ -82,19 +82,16 @@ export default {
 }
 
 .sec-1-cont{
-    display: flex;
+    margin: 0 auto;
+    width: 83.5%;
 }
 .sec-1-flex{
-    width: 83.5%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
-    margin: 0 auto;
-
-
-
+    gap: 2vw;
+    
 }
 
 .s-1-p1{
@@ -119,6 +116,11 @@ export default {
         font-weight: 700;
         font-size: 16px;   
         padding: 0.9vw 1.4vw;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        &:hover{
+            background: #5B5B5B;
+        }
     }
 }
 
@@ -142,47 +144,46 @@ export default {
     }
 
 }
-.sec-1{
-    .agile {
+    // .agile {
 
-        .agile__actions{
-            margin: 2.5% 0px 0px 0px;
-            .agile__dots{
-                gap: 10px;
-                .agile__dot{
-                    border: none;
-                    border-radius: 50%;
-                    background-color: #f2f3f5;
+    //     .agile__actions{
+    //         margin: 2.5% 0px 0px 0px;
+    //         .agile__dots{
+    //             gap: 10px;
+    //             .agile__dot{
+    //                 border: none;
+    //                 border-radius: 50%;
+    //                 background-color: #f2f3f5;
 
-                    &--current {
-                        background-color: #ff9619;
-                        border-radius: 50%;
-                    }
+    //                 &--current {
+    //                     background-color: #ff9619;
+    //                     border-radius: 50%;
+    //                 }
 
-                    button{
-                        padding: 0.4vw;
-                        background-color: transparent;
-                        border: none;
-                        border-radius: 50%;
+    //                 button{
+    //                     padding: 0.4vw;
+    //                     background-color: transparent;
+    //                     border: none;
+    //                     border-radius: 50%;
 
-                    }
-                }
+    //                 }
+    //             }
 
-            } 
+    //         } 
         
-        }
+    //     }
 
-        &__slide{
-            display: flex;
-            img{
-                width: 60vw;
-                object-fit: cover;
-                object-position: center;
-            }
-        }
+    //     &__slide{
+    //         display: flex;
+    //         img{
+    //             width: 60vw;
+    //             object-fit: cover;
+    //             object-position: center;
+    //         }
+    //     }
     
-    }
-}
+    // }
+
 
 
 // Slides styles
@@ -198,8 +199,12 @@ export default {
         max-height: 744px;
     }
 
-    .sec-1-flex{
+    .sec-1-cont{
         max-width: 1170px;
+    }
+
+    .sec-1-flex{
+        gap: 30px;
     }
 
     .s-1-p1{
@@ -215,23 +220,23 @@ export default {
         gap: 35px;
     }
 
-    .agile{
-        .agile__actions{
-            .agile__dots{
-                .agile__dot{
-                    button{
-                        padding: 7px;
-                    }
-                }
-            }
-        }
+    // .agile{
+    //     .agile__actions{
+    //         .agile__dots{
+    //             .agile__dot{
+    //                 button{
+    //                     padding: 7px;
+    //                 }
+    //             }
+    //         }
+    //     }
 
-        &__slide{
-            img {
-                width: initial;
-            }
-        }
-    }
+    //     &__slide{
+    //         img {
+    //             width: initial;
+    //         }
+    //     }
+    // }
 }
 
 @media screen and ( max-width: 1270px ) {
@@ -251,11 +256,86 @@ export default {
         } 
     }
 
+    // .agile, .agile__track{
+    //     height: 40vw;
+    // }
+}
+
+
+    
+</style>
+
+<style lang="scss" >
+
+.agile {
+
+.agile__actions{
+    margin: 2.5% 0px 0px 0px;
+    .agile__dots{
+        gap: 10px;
+        .agile__dot{
+            border: none;
+            border-radius: 50%;
+            background-color: #f2f3f5;
+
+            &--current {
+                background-color: #ff9619;
+                border-radius: 50%;
+            }
+
+            button{
+                padding: 0.4vw;
+                background-color: transparent;
+                border: none;
+                border-radius: 50%;
+
+            }
+        }
+
+    } 
+
+}
+
+&__slide{
+    display: flex;
+    img{
+        width: 60vw;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+}
+
+
+@media screen and ( max-width: 1400px ){
+    .agile{
+        .agile__actions{
+            .agile__dots{
+                .agile__dot{
+                    button{
+                        padding: 7px;
+                    }
+                }
+            }
+        }
+
+        &__slide{
+            img {
+                width: initial;
+            }
+        }
+    }
+}
+
+
+@media screen and ( max-width: 1270px ) {
+    
+
     .agile, .agile__track{
         height: 40vw;
     }
 }
 
 
-    
 </style>
