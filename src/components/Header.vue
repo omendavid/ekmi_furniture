@@ -54,9 +54,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 
-    nav {
-        // padding: 1.64% 0;
-    }
 
     .catalogue {
         position: relative;
