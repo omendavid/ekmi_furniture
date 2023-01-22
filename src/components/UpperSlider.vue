@@ -11,7 +11,7 @@
                         <p>Основано в 1993 году</p>
                     </div>
                     <agile  :autoplay="true" :autoplaySpeed="3000" :pauseOnDotsHover="true" :navButtons="false" :fade="true" >
-                        <div class="slide">
+                        <!-- <div class="slide">
                             <img src="../assets/img/section_1/couch_1.png" alt="">
                         </div>
                         <div class="slide">
@@ -19,6 +19,10 @@
                         </div>
                         <div class="slide">
                             <img src="../assets/img/section_1/couch_3.png" alt=""> 
+                        </div> -->
+                        <div class="slide"
+                        v-for="slider in sliders">
+                            <img :src="slider.img" alt=""> 
                         </div>
                     </agile>
                 </div>
@@ -42,14 +46,14 @@ export default {
         return {
             sliders: [
                 {
-                    img: '../assets/img/couch_1.png'
+                    img: require('../assets/img/section_1/couch_1.png')
                 },
-                // {
-                //     img: '../assets/img/couch_2.png'
-                // },
-                // {
-                //     img: '../assets/img/couch_3.png'
-                // },
+                {
+                    img: require('../assets/img/section_1/couch_2.png')
+                },
+                {
+                    img: require('../assets/img/section_1/couch_3.png')
+                },
             ]
         }
     },
@@ -267,62 +271,65 @@ export default {
 
 <style lang="scss" >
 
-.agile {
-
-.agile__actions{
-    margin: 2.5% 0px 0px 0px;
-    .agile__dots{
-        gap: 10px;
-        .agile__dot{
-            border: none;
-            border-radius: 50%;
-            background-color: #f2f3f5;
-
-            &--current {
-                background-color: #ff9619;
-                border-radius: 50%;
-            }
-
-            button{
-                padding: 0.4vw;
-                background-color: transparent;
-                border: none;
-                border-radius: 50%;
-
-            }
-        }
-
-    } 
-
-}
-
-&__slide{
-    display: flex;
-    img{
-        width: 60vw;
-        object-fit: cover;
-        object-position: center;
-    }
-}
-
-}
-
-
-@media screen and ( min-width: 1400px ){
-    .agile{
+.sec-1{
+    .agile {
         .agile__actions{
+            margin: 2.5% 0px 0px 0px;
             .agile__dots{
+                gap: 10px;
                 .agile__dot{
+                    border: none;
+                    border-radius: 50%;
+                    background-color: #f2f3f5;
+                
+                    &--current {
+                        background-color: #ff9619;
+                        border-radius: 50%;
+                    }
+                
                     button{
-                        padding: 7px;
+                        padding: 0.4vw;
+                        background-color: transparent;
+                        border: none;
+                        border-radius: 50%;
+                    
                     }
                 }
-            }
+            
+            } 
+        
         }
 
         &__slide{
-            img {
-                width: initial;
+            display: flex;
+            img{
+                width: 60vw;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+    }
+}
+
+@media screen and ( min-width: 1400px ){
+
+    .sec-1{
+        .agile{
+            .agile__actions{
+                .agile__dots{
+                    .agile__dot{
+                        button{
+                            padding: 7px;
+                        }
+                    }
+                }
+            }
+
+            &__slide{
+                img {
+                    width: initial;
+                }
             }
         }
     }
@@ -331,10 +338,12 @@ export default {
 
 @media screen and ( max-width: 1270px ) {
     
-
-    .agile, .agile__track{
+    .sec-1{
+        .agile, .agile__track{
         height: 40vw;
+        }
     }
+    
 }
 
 

@@ -7,7 +7,7 @@
 
 <script>
 // @ is an alias to /src
-import LowerSlider from '@/components/LowerSlider.vue';
+import LowerSlider from '@/components/LowerSlider';
 import UpperSlider from '@/components/UpperSlider';
 
 

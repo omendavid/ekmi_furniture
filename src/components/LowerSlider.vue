@@ -6,15 +6,19 @@
                     <h2><span>Н</span>овинки</h2>
                 </div>
                 <div class="s-2-slider-cont">
-                    <div class="slide">
-                        <div class="s-2-s-img-cont">
-                            <img src="../assets/img/section_2/couch_1.png" alt="">
+                    <div class="s-2-s-but-cont"><img @click="$refs.carousel.goToPrev()" src="../assets/img/section_2/arrow.png" alt=""></div>
+                    <agile ref="carousel" :autoplay="true" :pauseOnHover="true" :centerMode="true" :dots="false" :navButtons="false" :slidesToShow="3">
+                        <div class="slide" v-for="slider in sliders">
+                            <div class="s-2-s-img-cont">
+                                <img :src="slider.img" alt="sec_img">
+                            </div>
+                            <div class="s-2-s-info-cont">
+                                <h3>{{ slider.name }}</h3>
+                                <p>{{ slider.price }} UAH</p>
+                            </div>
                         </div>
-                        <div class="s-2-s-info-cont">
-                            <h3>Martin</h3>
-                            <p>15 000 UAH</p>
-                        </div>
-                    </div>
+                    </agile>
+                    <div class="s-2-s-but-cont"><img src="../assets/img/section_2/arrow.png" @click="$refs.carousel.goToNext()" alt=""></div>
                 </div>
                 <div class="s-2-f-but"><button>перейти в КАталог</button></div>
             </div>
@@ -22,7 +26,35 @@
     </section>
 </template>
 <script>
+import {VueAgile} from 'vue-agile';
+
 export default {
+    name: 'LowerSlider',
+    data() {
+        return {
+            sliders: [
+                {
+                    img: require('../assets/img/section_2/couch_2.png'),
+                    name: 'MARTIN',
+                    price: '15 000'
+                },
+                {
+                    img: require('../assets/img/section_2/couch_1.png'),
+                    name: 'Alba',
+                    price: '15 000'
+                },
+                {
+                    img: require('../assets/img/section_2/couch_3.png'),
+                    name: 'Laura',
+                    price: '15 000'
+                },
+
+            ]
+        }
+    },
+    components: {
+        agile: VueAgile
+    }
     
 }
 </script>
@@ -51,6 +83,15 @@ export default {
     }
     .s-2-slider-cont{
         padding: 80px 60px;
+        display: flex;
+        align-items: center;
+        > div:nth-child(1){
+            transform: rotateY(180deg);
+        }
+        .s-2-s-but-cont{
+            cursor: pointer;
+        }
+
     }
 
     .s-2-f-but{
@@ -73,14 +114,16 @@ export default {
 }
 
 .slide{
-    max-width: 270px;
+    width: 270px;
     height: 348px;
+    padding: 0px 41.5px;
+    box-sizing: border-box;
     .s-2-s-img-cont{
         display: flex;
         background: #F2F3F5;
         height: 79.8%;
         
-        img{
+         img{
             margin: auto auto;
         }
     }
@@ -130,8 +173,9 @@ export default {
         }
     }
     .slide{
-        max-width: 18.75vw;
+        width: 18.75vw;
         height: 24.1vw;
+        padding: 0px 2.8vw;
         
 
         .s-2-s-img-cont{
@@ -159,7 +203,39 @@ export default {
     }
     
 }
-    
+@media screen and ( max-width: 1200px ) {
+    .s-2-flex{
+        .s-2-slider-cont{
+            .s-2-s-but-cont img{
+                width: 1.5vw;
+            }
+        }
+    }
+}
 
     
+</style>
+
+<style lang="scss" >
+
+.sec-2{
+    .agile{
+        max-width: 1050px;
+    }
+    .agile__slides {
+        
+        justify-content: space-between;
+    }
+}
+
+@media screen and ( max-width: 1440px ) {
+    .sec-2{
+        .agile{
+            max-width: 72.9vw;
+        }
+    }
+}
+
+
+
 </style>
