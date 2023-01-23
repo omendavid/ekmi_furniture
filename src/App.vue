@@ -49,7 +49,7 @@ a {
   background: rgb(221, 221, 221);
 }
 ::-webkit-scrollbar-thumb{
-  background: #ff9619;
+  background: #A9C2BE;
   border-radius: 6px;
 }
 

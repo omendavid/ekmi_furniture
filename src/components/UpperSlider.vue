@@ -4,7 +4,7 @@
             <div class="sec-1-flex" >
                 <div class="s-1-p1">
                     <h2><span>Л</span>УЧШАЯ ЖИЗНЬ, СОЗДАННАЯ ДЛЯ ВАС!</h2>
-                    <button>перейти в КАталог</button>
+                    <router-link to=""><button>перейти в КАталог</button></router-link>
                 </div> 
                 <div class="s-1-p2">
                     <div class="since-div">

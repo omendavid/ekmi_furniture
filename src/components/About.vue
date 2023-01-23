@@ -64,6 +64,9 @@ export default {
             gap: 40px;
             .s-1-a-img-c{
                 position: relative;
+                img{
+                    transform: rotateY(180deg);
+                }
                     &::after{
                         position: absolute;
                         z-index: -1;
@@ -133,8 +136,69 @@ export default {
                 background: #A9C2BE;
             }
         }
-        
+
+
+        @media screen and (max-width: 1440px) {
+            .s-1-cont{
+                max-width: 73.8vw;
+            }
+
+            .s-1-a{
+                h2{
+                    font-size: 2.085vw;
+                    span{
+                        &::before{
+                            width: 4vw;
+                            height: 4vw;
+                        }
+                    }
+                }
+                p{
+                    font-size: 1.25vw;
+                }
+                img{
+                    width: 29.86vw;
+                }
+
             
+       
+                &:nth-child(1){
+                    padding-top: 2.43vw;
+                }
+                &:nth-child(2){
+                    padding: 9.7vw 0px 9vw 0px;
+
+                    gap: 2.7vw;
+                    .s-1-a-img-c{
+                            &::after{
+                                width: 19.58vw;
+                                height: 23.12vw;
+                                bottom: -3.47vw;
+                                left: -4.86vw;
+                            }
+                    }
+            }
+                
+            }
+
+            .s-1-a-info{
+                gap: 3.19vw
+            }
+
+            .s-1-a-img-c{
+            
+                &::after{
+                    
+                    width: 19.58vw;
+                    height: 23.12vw;
+                    bottom: -3.47vw;
+                    right: -4.86vw;
+                }
+            }
+            
+        }
+        
+    
 
     
 

@@ -19,13 +19,21 @@
                 <li class="h-u-l logo"><router-link to="/"><img src="../assets/img/logo.png" alt=""></router-link></li>
                 <li class="h-u-l about"><router-link to="about"> О компании</router-link></li>
                 <li class="h-u-l tel"><a href="tel:+38 (099)-638-45-37"> +38 (099)-638-45-37</a></li>
-                <li class="h-u-l lang">
-                    <select id="">
+                <li class="h-u-l lang" @click="openLang">
+                    {{ currentLang }} <i class="fa-solid fa-angle-down" :class="flip"></i>
+                    <ul v-if="open == true" >
+                        
+                        <li v-for="lang in langs" :value="lang.lang" @click="currentLang = lang.lang">{{ lang.lang }}</li>
+
+                    </ul>
+                    
+                    
+                    <!-- <select id="">
                         <option 
                             v-for="lang in langs" 
                             :value="lang.lang"
                         >{{ lang.lang }}</option>
-                    </select>
+                    </select> -->
                 </li>
             </ul>
         </nav>
@@ -37,6 +45,9 @@ export default {
 
     data() {
         return {
+            open: false,
+            flip: '',
+            currentLang: 'RU',
             langs: [
                 {
                     lang: 'RU'
@@ -49,7 +60,18 @@ export default {
                 },
             ]
         }
-    }
+    },
+    methods: {
+        openLang() {
+            this.open = !this.open
+            if(this.open == true){
+                this.flip = 'flip'
+            }else{
+                this.flip = ''
+            }
+        }
+    },
+    
 }
 </script>
 <style lang="scss" scoped>
@@ -97,6 +119,11 @@ export default {
         background-color: #ff9619;
     }
 
+    .h-u-l{
+       color :#343434;
+       line-height: 150%;
+    }
+
     .n-el-cont {
         display: flex;
         flex-direction: row;
@@ -123,17 +150,63 @@ export default {
         width: 15vw;
     }
 
-    .n-el-cont select {
-        border: none
+    .tel a{
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
     }
 
-    .n-el-cont select option {
-        border: none;
+    // .n-el-cont select {
+    //     border: none;
+    //     width: 100%;
+    // }
 
-        background-color: white;
+    // .n-el-cont select option {
+    //     border: none;
         
+    //     background-color: white;
+        
+    // }
+
+    .lang{
+        position: relative;
+        i{
+            transition: all 0.3s ease;
+        }
+        ul{
+            position: absolute;
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 100%;
+            z-index: 1;
+            position: absolute;
+            background-color: #fff;
+            list-style-type: none;
+            box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.15);
+            padding: 0px 6px;
+            min-width: 1.4vw;
+            width: min-content;
+            transition: all 0.3s ease;
+            li{
+                display: inline-block;
+                height: fit-content;
+                line-height: 150%;
+                transition: all 0.2s ease;
+                &:hover{
+                    color: #ff9619;
+
+                }
+            }
+        }
     }
 
+    .flip{
+        transform: rotateX(180deg);
+    }
+    
    .n-el-cont select option:focus{
         background-color: white;
         color: #ff9619
@@ -170,5 +243,20 @@ export default {
                 font-size: 1.4vw;
             }
         }
+    }
+
+    @media screen and (max-width: 750px) {
+        .lang {
+            
+            ul {
+                
+                padding: 0.4vw;
+                
+            }
+        }
+    }
+
+    @media screen and ( max-width: 600px ) {
+        
     }
 </style>
