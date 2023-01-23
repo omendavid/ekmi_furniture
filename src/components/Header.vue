@@ -20,10 +20,10 @@
                 <li class="h-u-l about"><router-link to="about"> О компании</router-link></li>
                 <li class="h-u-l tel"><a href="tel:+38 (099)-638-45-37"> +38 (099)-638-45-37</a></li>
                 <li class="h-u-l lang" @click="openLang">
-                    {{ currentLang }} <i class="fa-solid fa-angle-down" :class="flip"></i>
+                    {{ select.currentLang }} <i class="fa-solid fa-angle-down" :class="select.flip"></i>
                     <ul v-if="open == true" >
                         
-                        <li v-for="lang in langs" :value="lang.lang" @click="currentLang = lang.lang">{{ lang.lang }}</li>
+                        <li v-for="lang in langs" :value="lang.lang" @click="select.currentLang = lang.lang">{{ lang.lang }}</li>
 
                     </ul>
                     
@@ -40,13 +40,38 @@
                 <li class="h-u-l logo"><router-link to="/"><img src="../assets/img/logo_mini.png" alt=""></router-link></li>
                 <li class="h-u-l-cont-side">
                     <li class="h-u-l lang" @click="openLang">
-                        {{ currentLang }} <i class="fa-solid fa-angle-down" :class="flip"></i>
-                        <ul v-if="open == true" >
+                        {{ select.currentLang }} <i class="fa-solid fa-angle-down" :class="select.flip"></i>
+                        <ul v-if="select.open == true" >
                             <li v-for="lang in langs" :value="lang.lang" @click="currentLang = lang.lang">{{ lang.lang }}</li>
                         </ul>
                     </li>
                     <li class="h-u-l tel"><a href="tel:+38 (099)-638-45-37"><i class="fa-solid fa-phone"></i></a></li>
-                    <li class="burg-cont" @click="openMenu"><span class="burger" :class="active"></span></li>
+                    <li class="menu-cont" >
+                        <ul class="burger-cont" @click="openMenu">
+                            <span class="burger" :class="menu.active"></span>
+                        </ul>
+                        
+                        <ul class="menu" :class="menu.openMen">
+                            <li class="h-u-l catalogue" ><span @click="openCat">Каталог</span>
+                                <transition>
+                                    <ul class="catalogue-drop" v-if="catalogue.catOpen == true">
+                                        <li>Диваны </li>
+                                        <li>Кресла </li>
+                                        <li>Стулья </li>
+                                        <li>Кровати  </li>
+                                        <li>Матрацы </li>
+                                        <li>Пуфы </li>
+                                        <li>Эксклюзивная мебель</li>
+                                        <li>2D-3D модели</li>
+                                    </ul>
+                                </transition>
+                                
+                            </li>
+                            <li class="h-u-l individual">Индивидуальная мебель</li>
+                            <li class="h-u-l contacts">Контакты</li>
+                            <li class="h-u-l about"><router-link to="about"> О компании</router-link></li>
+                        </ul>
+                    </li>
                 </li>
             </ul>   
         </nav>
@@ -59,11 +84,19 @@ export default {
     data() {
         return {
             screenSize : 1440,
-            open: false,
-            flip: '',
-            currentLang: 'RU',
-            openMen: false,
-            active: '',
+            select: {
+                open: false,
+                flip: '',
+                currentLang: 'RU',
+            },
+            catalogue: {
+                catOpen: false,
+            },
+            menu: {
+                opened: false,
+                openMen: '',
+                active: '',
+            },
             langs: [
                 {
                     lang: 'RU'
@@ -84,20 +117,25 @@ export default {
     },
     methods: {
         openLang() {
-            this.open = !this.open
-            if(this.open == true){
-                this.flip = 'flip'
+            this.select.open = !this.select.open
+            if(this.select.open == true){
+                this.select.flip = 'flip'
             }else{
-                this.flip = ''
+                this.select.flip = ''
             }
         },
         openMenu() {
-            this.openMen = !this.openMen
-            if(this.openMen == true){
-                this.active = 'active'
+            this.menu.opened = !this.menu.opened
+            if(this.menu.opened == true){
+                this.menu.openMen = 'opened'
+                this.menu.active = 'active'
             }else {
-                this.active = ''
+                this.menu.openMen = ''
+                this.menu.active = ''
             }
+        },
+        openCat() {
+            this.catalogue.catOpen = !this.catalogue.catOpen
         }
 
     },
@@ -131,53 +169,98 @@ export default {
             
             .h-u-l{
                 font-size: 3.4vw;
+                transition: all 0.3s ease;
+                &.tel:hover , &.tel:focus{
+                    color: #ff9619;
+                }
             }
-            .burg-cont{
+            .menu-cont{
                 width: 25px;
-                span{
+                .burger-cont > span{
                     display: block;
                     height: 2px;
                     width: 25px;
                     background: black;
                     position: relative;
-                    transition: all 0.3s ease;
+                    transition: all 0.4s cubic-bezier(0.29, 0.34, 0.14, 1.01);
+                    z-index: 10;
                     &::before{
                         position: absolute;
                         display: block;
-                        top: -10px;
+                        transform: translateY(-10px);
                         content: '';
                         height: 2px;
                         width: 25px;
                         background: black;
-                        transition: all 0.3s ease;
+                        transition: all 0.4s cubic-bezier(0.29, 0.34, 0.14, 1.01);
                     }
                     &::after{
                         position: absolute;
                         display: block;
-                        top: 10px;
+                        transform: translateY(10px);
                         content: '';
                         height: 2px;
                         width: 25px;
                         background: black;
-                        transition: all 0.3s ease;
+                        transition: all 0.4s cubic-bezier(0.29, 0.34, 0.14, 1.01);
                     }
 
                     &.active {
-                        background: white;
-                        height: 0px;
+                        background: transparent;
+                        transform: translateX(-50px);
+                        
+                        
                         &::before{
-                            transform: rotateZ(45deg);
+                            transform: rotate(45deg) translate(34px, -34px);
                             top: 0;
+                            height: 1px;
                         }
                         &::after{
-                            transform: rotateZ(-45deg);
+                            transform: rotate(-45deg) translate(34px, 34px);
                             top: 0;
+                            height: 1px;
                         }
                     }
+                }
+                .menu{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    background-color: rgb(255, 255, 255);
+                    z-index: 9;
+                    position: fixed;
+                    width: 63.7vw;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    transform: translateX(157%);
+                    transition: all 0.5s cubic-bezier(0, 0, 0.08, 1);
+                    li{
+                        list-style-type: none;
+                        .catalogue-drop{
+                            height: 0%;
+                        }
+                    }
+                }
+                .opened{
+                    transform: translateX(67.3%);
                 }
             }
         }
     }
+
+.v-enter-active,
+.v-leave-active {
+    height: 100%;
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    height: 0%;
+  opacity: 0;
+}
+
 
     .catalogue {
         position: relative;
