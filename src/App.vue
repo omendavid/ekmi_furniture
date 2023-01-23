@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <Header />
+    <Header :screenSize="screenSize" />
     <router-view/>
   </div>
   
@@ -12,12 +12,19 @@ import Header from './components/Header';
 export default {
   data() {
     return {
-
+      screenSize: 1920
     }
   },
   components: {
   Header
-}
+},
+mounted(){
+        this.screenSize = window.screen.width
+
+        window.onresize=()=>{
+            this.screenSize = window.screen.width
+        }
+    }
 }
 
 </script>

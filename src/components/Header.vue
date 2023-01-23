@@ -1,7 +1,7 @@
 <template lang="">
     <header>
         <nav>
-            <ul class="n-el-cont">
+            <ul class="n-el-cont" v-if="screenSize > 375">
                 <li class="h-u-l catalogue">Каталог
                     <ul class="catalogue-dropdown">
                         <li>Диваны </li>
@@ -36,6 +36,19 @@
                     </select> -->
                 </li>
             </ul>
+            <ul class="n-el-cont-mini" v-if="screenSize <= 375">
+                <li class="h-u-l logo"><router-link to="/"><img src="../assets/img/logo_mini.png" alt=""></router-link></li>
+                <li class="h-u-l-cont-side">
+                    <li class="h-u-l lang" @click="openLang">
+                        {{ currentLang }} <i class="fa-solid fa-angle-down" :class="flip"></i>
+                        <ul v-if="open == true" >
+                            <li v-for="lang in langs" :value="lang.lang" @click="currentLang = lang.lang">{{ lang.lang }}</li>
+                        </ul>
+                    </li>
+                    <li class="h-u-l tel"><a href="tel:+38 (099)-638-45-37"><i class="fa-solid fa-phone"></i></a></li>
+                    <li class="burg-cont" @click="openMenu"><span class="burger" :class="active"></span></li>
+                </li>
+            </ul>   
         </nav>
     </header>
 </template>
@@ -45,9 +58,12 @@ export default {
 
     data() {
         return {
+            screenSize : 1440,
             open: false,
             flip: '',
             currentLang: 'RU',
+            openMen: false,
+            active: '',
             langs: [
                 {
                     lang: 'RU'
@@ -61,6 +77,11 @@ export default {
             ]
         }
     },
+    props: {
+        screenSize: {
+            type: Number
+        }
+    },
     methods: {
         openLang() {
             this.open = !this.open
@@ -69,13 +90,94 @@ export default {
             }else{
                 this.flip = ''
             }
+        },
+        openMenu() {
+            this.openMen = !this.openMen
+            if(this.openMen == true){
+                this.active = 'active'
+            }else {
+                this.active = ''
+            }
         }
+
     },
+   
     
 }
 </script>
 <style lang="scss" scoped>
 
+
+    .n-el-cont-mini{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        max-width: 90.4%;
+        width: 100%;
+        margin: 0 auto;
+        padding: 4vw 0px;
+
+        list-style-type: none;
+        font-weight: 600;
+        line-height: 150%;
+        .h-u-l-cont-side{
+            flex-basis: 45%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            
+            .h-u-l{
+                font-size: 3.4vw;
+            }
+            .burg-cont{
+                width: 25px;
+                span{
+                    display: block;
+                    height: 2px;
+                    width: 25px;
+                    background: black;
+                    position: relative;
+                    transition: all 0.3s ease;
+                    &::before{
+                        position: absolute;
+                        display: block;
+                        top: -10px;
+                        content: '';
+                        height: 2px;
+                        width: 25px;
+                        background: black;
+                        transition: all 0.3s ease;
+                    }
+                    &::after{
+                        position: absolute;
+                        display: block;
+                        top: 10px;
+                        content: '';
+                        height: 2px;
+                        width: 25px;
+                        background: black;
+                        transition: all 0.3s ease;
+                    }
+
+                    &.active {
+                        background: white;
+                        height: 0px;
+                        &::before{
+                            transform: rotateZ(45deg);
+                            top: 0;
+                        }
+                        &::after{
+                            transform: rotateZ(-45deg);
+                            top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     .catalogue {
         position: relative;
