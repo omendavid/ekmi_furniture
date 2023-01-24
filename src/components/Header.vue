@@ -225,7 +225,7 @@ export default {
                     &.active {
                         background: transparent;
                         transform: translateX(-50px);
-                        
+                        position: fixed;
                         
                         &::before{
                             transform: rotate(45deg) translate(34px, -34px);

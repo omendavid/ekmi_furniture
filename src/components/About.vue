@@ -38,7 +38,12 @@
 </template>
 <script>
 export default {
-    
+    name: "About",
+    props: {
+        screenSize: {
+            type: Number
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -197,6 +202,77 @@ export default {
             }
             
         }
+
+        @media screen and ( max-width: 376px ) {
+            .s-1-cont{
+                max-width: 90.4%;
+            }
+            .s-1-a{
+                flex-direction: column;
+                &:nth-child(2){
+                    display: flex;
+                    flex-direction: column;
+                    h2{
+                        font-size: 5.33vw;
+                        width: 76.2vw;
+                        margin: 0 auto;
+                    }
+                    .s-1-a-middle-cont{
+                        display: flex;
+                        flex-direction: column-reverse;
+                        width: 100%;
+                        .s-1-a-img-c{
+                            width: 100%;
+                            img{
+                                width: 100%;
+                            }
+                            &::after{
+                                width: 57.86vw;
+                                height: 67.73vw;
+                            }
+                        }
+                    }
+                }
+                .s-1-a-img-c{
+                    &::after{
+                        width: 57.86vw;
+                        height: 67.73vw;
+                    }
+                    img{
+                        width: 100%;
+                    }
+                }
+
+                .s-1-a-info{
+                    max-width: 76.2vw;
+                    margin: 0 auto;
+                    h2{
+                        font-size: 5.33vw;
+                        span{
+                            
+                        }
+                        
+                    }
+                    p{
+                        font-size: 3.73vw;
+                        line-height: 5.04vw;
+                    }
+                }
+            }
+
+            .s-1-a{
+                h2{
+                    span{
+                        &::before{
+                            right: -0.4vw;
+                            width: 9.6vw;
+                            height: 9.6vw;
+                            }
+                    }
+                }
+            }
+        }  
+        
         
     
 
