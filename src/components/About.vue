@@ -248,9 +248,6 @@ export default {
                     margin: 0 auto;
                     h2{
                         font-size: 5.33vw;
-                        span{
-                            
-                        }
                         
                     }
                     p{
