@@ -21,7 +21,7 @@
                 <li class="h-u-l tel"><a href="tel:+38 (099)-638-45-37"> +38 (099)-638-45-37</a></li>
                 <li class="h-u-l lang" @click="openLang">
                     {{ select.currentLang }} <i class="fa-solid fa-angle-down" :class="select.flip"></i>
-                    <ul v-if="open == true" >
+                    <ul v-if="select.open == true" >
                         
                         <li v-for="lang in langs" :value="lang.lang" @click="select.currentLang = lang.lang">{{ lang.lang }}</li>
 
@@ -36,13 +36,13 @@
                     </select> -->
                 </li>
             </ul>
-            <ul class="n-el-cont-mini" v-if="screenSize <= 375">
+            <ul class="n-el-cont-mini" v-else>
                 <li class="h-u-l logo"><router-link to="/"><img src="../assets/img/logo_mini.png" alt=""></router-link></li>
                 <li class="h-u-l-cont-side">
                     <li class="h-u-l lang" @click="openLang">
                         {{ select.currentLang }} <i class="fa-solid fa-angle-down" :class="select.flip"></i>
                         <ul v-if="select.open == true" >
-                            <li v-for="lang in langs" :value="lang.lang" @click="currentLang = lang.lang">{{ lang.lang }}</li>
+                            <li v-for="lang in langs" :value="lang.lang" @click="select.currentLang = lang.lang">{{ lang.lang }}</li>
                         </ul>
                     </li>
                     <li class="h-u-l tel"><a href="tel:+38 (099)-638-45-37"><i class="fa-solid fa-phone"></i></a></li>
@@ -52,7 +52,7 @@
                         </ul>
                         
                         <ul class="menu" :class="menu.openMen">
-                            <li class="h-u-l catalogue" ><span @click="openCat">Каталог</span>
+                            <li class="h-u-l catalogue" :class="catalogue.catOpened" ><span @click="openCat">Каталог</span>
                                 <transition>
                                     <ul class="catalogue-drop" v-if="catalogue.catOpen == true">
                                         <li>Диваны </li>
@@ -70,6 +70,11 @@
                             <li class="h-u-l individual">Индивидуальная мебель</li>
                             <li class="h-u-l contacts">Контакты</li>
                             <li class="h-u-l about"><router-link to="about"> О компании</router-link></li>
+                            <li class="h-u-l">2D-3D модели</li>
+                            <li class="h-u-l">Шоу-рум</li>
+                            <li class="h-u-l">Страница партнёров дизайнеров</li>
+                            <li class="h-u-l">Дилерам</li>
+                            <li class="h-u-l">Контакты</li>
                         </ul>
                     </li>
                 </li>
@@ -83,7 +88,7 @@ export default {
 
     data() {
         return {
-            screenSize : 1440,
+            
             select: {
                 open: false,
                 flip: '',
@@ -91,6 +96,7 @@ export default {
             },
             catalogue: {
                 catOpen: false,
+                catOpened: ''
             },
             menu: {
                 opened: false,
@@ -136,6 +142,12 @@ export default {
         },
         openCat() {
             this.catalogue.catOpen = !this.catalogue.catOpen
+            if(this.catalogue.catOpen == true){
+                this.catalogue.catOpened = 'catOpened'
+            }
+            else{
+                this.catalogue.catOpened = ''
+            }
         }
 
     },
@@ -160,6 +172,10 @@ export default {
         list-style-type: none;
         font-weight: 600;
         line-height: 150%;
+
+        .logo img{
+            width:24.5vw
+        }
         .h-u-l-cont-side{
             flex-basis: 45%;
             display: flex;
@@ -175,11 +191,12 @@ export default {
                 }
             }
             .menu-cont{
-                width: 25px;
+                width: 6.6vw;
+                padding: 2.6vw 0px;
                 .burger-cont > span{
                     display: block;
-                    height: 2px;
-                    width: 25px;
+                    height: 0.53vw;
+                    width: 6.6vw;
                     background: black;
                     position: relative;
                     transition: all 0.4s cubic-bezier(0.29, 0.34, 0.14, 1.01);
@@ -187,20 +204,20 @@ export default {
                     &::before{
                         position: absolute;
                         display: block;
-                        transform: translateY(-10px);
+                        transform: translateY(-2.6vw);
                         content: '';
-                        height: 2px;
-                        width: 25px;
+                        height: 0.53vw;
+                        width: 6.6vw;
                         background: black;
                         transition: all 0.4s cubic-bezier(0.29, 0.34, 0.14, 1.01);
                     }
                     &::after{
                         position: absolute;
                         display: block;
-                        transform: translateY(10px);
+                        transform: translateY(2.6vw);
                         content: '';
-                        height: 2px;
-                        width: 25px;
+                        height: 0.53vw;
+                        width: 6.6vw;
                         background: black;
                         transition: all 0.4s cubic-bezier(0.29, 0.34, 0.14, 1.01);
                     }
@@ -214,11 +231,13 @@ export default {
                             transform: rotate(45deg) translate(34px, -34px);
                             top: 0;
                             height: 1px;
+                            width: 4.5vw;
                         }
                         &::after{
                             transform: rotate(-45deg) translate(34px, 34px);
                             top: 0;
                             height: 1px;
+                            width: 4.5vw;
                         }
                     }
                 }
@@ -235,10 +254,24 @@ export default {
                     left: 0;
                     transform: translateX(157%);
                     transition: all 0.5s cubic-bezier(0, 0, 0.08, 1);
+
+                    padding: 7.46vw 5.3vw;
+                    box-sizing: border-box;
                     li{
+                        color: #4B4844;
+                        text-transform: capitalize;
                         list-style-type: none;
                         .catalogue-drop{
                             height: 0%;
+                        }
+                        
+                    }
+                     > li{
+                        padding: 3.06vw 0px;
+                     }
+                    .catOpened{
+                        span{
+                            color: #ff9619;
                         }
                     }
                 }
@@ -441,7 +474,5 @@ export default {
         }
     }
 
-    @media screen and ( max-width: 600px ) {
-        
-    }
+    
 </style>

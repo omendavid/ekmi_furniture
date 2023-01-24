@@ -1,7 +1,7 @@
 <template>
   <div class="sections-cont">
-    <UpperSlider />
-    <LowerSlider />
+    <UpperSlider :screenSize="screenSize" />
+    <LowerSlider :screenSize="screenSize" />
   </div>
 </template>
 
@@ -16,6 +16,11 @@ export default {
   components: {
     UpperSlider,
     LowerSlider
+},
+  props: {
+    screenSize: {
+        type: Number
+    }
 }
 }
 </script>

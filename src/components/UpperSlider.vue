@@ -1,6 +1,6 @@
 <template lang="">
     <section class="sec-1">
-        <div class="sec-1-cont">
+        <div class="sec-1-cont" v-if="screenSize > 375 ">
             <div class="sec-1-flex" >
                 <div class="s-1-p1">
                     <h2><span>Л</span>УЧШАЯ ЖИЗНЬ, СОЗДАННАЯ ДЛЯ ВАС!</h2>
@@ -11,20 +11,36 @@
                         <p>Основано в 1993 году</p>
                     </div>
                     <agile  :autoplay="true" :autoplaySpeed="3000" :pauseOnDotsHover="true" :navButtons="false" :fade="true" >
-                        <!-- <div class="slide">
-                            <img src="../assets/img/section_1/couch_1.png" alt="">
-                        </div>
-                        <div class="slide">
-                            <img src="../assets/img/section_1/couch_2.png" alt=""> 
-                        </div>
-                        <div class="slide">
-                            <img src="../assets/img/section_1/couch_3.png" alt=""> 
-                        </div> -->
                         <div class="slide"
                         v-for="slider in sliders">
                             <img :src="slider.img" alt=""> 
                         </div>
                     </agile>
+                </div>
+            </div>
+        </div>
+
+<!-- ---------------------------------- mobile ---------------------------- -->
+
+
+        <div class="sec-1-cont-mobile" v-else>
+            <div class="sec-1-flex-mobile">
+                <div class="s-1-p1">
+                    <h2><span>Л</span>УЧШАЯ ЖИЗНЬ, СОЗДАННАЯ ДЛЯ ВАС!</h2>
+                </div> 
+                <div class="s-1-p2">
+                    <agile  :autoplay="true" :autoplaySpeed="3000" :pauseOnDotsHover="true" :navButtons="false" :fade="true" >
+                        <div class="slide"
+                        v-for="slider in sliders">
+                            <img :src="slider.img" alt=""> 
+                        </div>
+                    </agile>
+                </div>
+                <div class="since-div">
+                    <p>Основано в 1993 году</p>
+                </div>
+                <div class="but-div">
+                    <router-link to=""><button>перейти в КАталог</button></router-link>
                 </div>
             </div>
         </div>
@@ -59,10 +75,66 @@ export default {
     },
     components: {
         agile: VueAgile
+    },
+    props: {
+        screenSize: {
+            type: Number
+        }
     }
 }
 </script>
 <style lang="scss" scoped>
+
+
+.sec-1-cont-mobile{
+    padding: 8vw 0 15.2vw 0;
+    .sec-1-flex-mobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        gap: 5.33vw;
+    }
+    .s-1-p1{
+        width: 100%;
+        h2{
+            line-height: 7.33vw;
+            font-size: 6.66vw;
+            width: 95%;
+            padding-left: 4.8vw;
+            
+        }
+    }
+
+    
+
+    .since-div{
+        text-align: center;
+        p{
+            font-size: 5.33vw;
+            color: white;
+            
+        }
+    }
+    .but-div{
+        text-align: center;
+        button{
+        background: #ff9619;
+        color: white;
+        text-transform: uppercase;
+        border: none;
+        font-weight: 700;
+        font-size: 4.27vw;   
+        padding: 3.7vw 5.6vw;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        
+        &:hover{
+            background: #5B5B5B;
+        }
+    }
+    }
+}
 
 
 
@@ -107,7 +179,7 @@ export default {
         font-size: 42px;
         color: white;
         text-transform: capitalize;
-        max-width: 270px;
+      
         span{
             color: #ff9619;
         }
@@ -265,6 +337,15 @@ export default {
     // }
 }
 
+@media screen and ( max-width: 376px ) {
+    .sec-1{
+        max-height: none;
+        &::before{
+            height: 100%;
+        }
+    }
+}
+
 
     
 </style>
@@ -344,6 +425,35 @@ export default {
         }
     }
     
+}
+
+@media screen and (max-width: 376px) {
+    .sec-1 {
+        .agile, .agile__track{
+            width: 100vw;
+            height: 100%;
+            
+        }
+
+        .agile{
+            &__slide{
+                img {
+                    width: 100vw;
+                }
+            }
+            .agile__actions{
+                .agile__dots{
+                    .agile__dot{
+                    
+                    
+                        button{
+                            padding: 0.93vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 

@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <Header :screenSize="screenSize" />
-    <router-view/>
+    <router-view :screenSize="screenSize" />
   </div>
   
 </template>

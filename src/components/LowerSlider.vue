@@ -1,6 +1,6 @@
 <template lang="">
     <section class="sec-2">
-        <div class="sec-2-cont">
+        <div class="sec-2-cont" v-if="screenSize > 375">
             <div class="s-2-flex">
                 <div class="s-2-f-h-cont">
                     <h2><span>Н</span>овинки</h2>
@@ -19,6 +19,49 @@
                         </div>
                     </agile>
                     <div class="s-2-s-but-cont"><img src="../assets/img/section_2/arrow.png" @click="$refs.carousel.goToNext()" alt=""></div>
+                </div>
+                <div class="s-2-f-but"><button>перейти в КАталог</button></div>
+            </div>
+        </div>
+
+
+
+        <!-- ---------------------------- mobile ---------------------------- -->
+
+        <div class="sec-2-cont-mobile" v-else>
+            <div class="s-2-flex-mobile">
+                <div class="s-2-f-h-cont">
+                    <h2><span>Н</span>овинки</h2>
+                </div>
+                <div class="s-2-slider-cont">
+                    <div class="s-2-s-but-cont"><img @click="$refs.carousel_1.goToPrev()" src="../assets/img/section_2/arrow.png" alt=""></div>
+                    <agile ref="carousel_1" :autoplay="true" :pauseOnHover="true" :centerMode="true" :dots="false" :navButtons="false" :slidesToShow="1">
+                        <div class="slide" v-for="slider in sliders">
+                            <div class="s-2-s-img-cont">
+                                <img :src="slider.img" alt="sec_img">
+                            </div>
+                            <div class="s-2-s-info-cont">
+                                <h3>{{ slider.name }}</h3>
+                                <p>{{ slider.price }} UAH</p>
+                            </div>
+                        </div>
+                    </agile>
+                    <div class="s-2-s-but-cont"><img src="../assets/img/section_2/arrow.png" @click="$refs.carousel_1.goToNext()" alt=""></div>
+                </div>
+                <div class="s-2-slider-cont">
+                    <div class="s-2-s-but-cont"><img @click="$refs.carousel_2.goToPrev()" src="../assets/img/section_2/arrow.png" alt=""></div>
+                    <agile ref="carousel_2" :autoplay="true" :pauseOnHover="true" :centerMode="true" :dots="false" :navButtons="false" :slidesToShow="1">
+                        <div class="slide" v-for="slider in sliders">
+                            <div class="s-2-s-img-cont">
+                                <img :src="slider.img" alt="sec_img">
+                            </div>
+                            <div class="s-2-s-info-cont">
+                                <h3>{{ slider.name }}</h3>
+                                <p>{{ slider.price }} UAH</p>
+                            </div>
+                        </div>
+                    </agile>
+                    <div class="s-2-s-but-cont"><img src="../assets/img/section_2/arrow.png" @click="$refs.carousel_2.goToNext()" alt=""></div>
                 </div>
                 <div class="s-2-f-but"><button>перейти в КАталог</button></div>
             </div>
@@ -54,11 +97,74 @@ export default {
     },
     components: {
         agile: VueAgile
+    },
+    props: {
+        screenSize: {
+            type: Number
+        }
     }
     
 }
 </script>
 <style lang="scss" scoped>
+
+
+.sec-2-cont-mobile{
+    padding: 0px 4.8vw;
+
+    .s-2-flex-mobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16vw;
+    }
+
+    
+    h2{
+            color: #343434;
+            font-weight: 700;
+            font-size: 5.33vw;
+            span{
+                color: #FF9619;
+            }
+        }
+
+        .s-2-slider-cont{
+           
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            > div:nth-child(1){
+                transform: rotateY(180deg);
+            }
+            .s-2-s-but-cont{
+                cursor: pointer;
+            }
+        }
+
+        .s-2-f-but{
+            text-align: center;
+            button{
+                background: #ff9619;
+                color: white;
+                text-transform: uppercase;
+                border: none;
+                font-weight: 700;
+                font-size: 4.27vw;   
+                padding: 3.7vw 5.6vw;
+                transition: all 0.3s ease;
+                cursor: pointer;
+
+                &:hover{
+                    background: #5B5B5B;
+                }
+            }
+        }
+}
+
+
+
+
 
 
 .sec-2{
@@ -213,6 +319,29 @@ export default {
     }
 }
 
+@media screen and ( max-width: 376px ) {
+    .slide{
+        height: auto;
+        .s-2-s-img-cont{
+            img{
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+        .s-2-s-info-cont{
+            h3 {
+                font-size: 4.8vw;
+                line-height: 5.86vw;
+            }
+            p{
+                font-size: 4.87vw;
+                line-height: 6.53vw;
+            }
+        }
+    }
+}
+
     
 </style>
 
@@ -234,6 +363,10 @@ export default {
             max-width: 72.9vw;
         }
     }
+}
+
+@media screen and ( max-width: 375px ) {
+    
 }
 
 
