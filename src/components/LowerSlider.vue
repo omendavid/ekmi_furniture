@@ -128,12 +128,19 @@ export default {
                 color: #FF9619;
             }
         }
+        .slide{
+            .s-2-s-img-cont{
+                height: 74.13vw;
+            }
+            
+        }
 
         .s-2-slider-cont{
            
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: 74.13vw;
             > div:nth-child(1){
                 transform: rotateY(180deg);
             }
